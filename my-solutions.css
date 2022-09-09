@@ -151,4 +151,16 @@
     animation: ex-11 2s linear infinite;
 }
 /* ESERCIZIO 12 */
+
+.ex-12-button *{
+    transition: transform 3s ease-in-out;
+}
+
+.ex-12-button:active .ex-12-top-white{
+    transform: translate(50px, 0);
+}
+
+.ex-12-button:active .ex-12-bottom-white{
+    transform: translate(-50px, 0);
+}
 /* ESERCIZIO 13 */
