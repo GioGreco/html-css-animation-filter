@@ -50,6 +50,14 @@
     height: 20px;
 }
 /* ESERCIZIO 6 */
+
+.ex-6-img{
+    transition: filter 2s ease-in-out;
+}
+
+.ex-6-img:hover{
+    filter: grayscale(100%);
+}
 /* ESERCIZIO 7 */
 /* ESERCIZIO 8 */
 /* ESERCIZIO 9 */
