@@ -88,7 +88,7 @@
 }
 
 .ex-7-img:hover{
-    animation: ex-7 10s ease-in-out forwards;
+    animation: ex-7 8s ease-in-out forwards;
 }
 /* ESERCIZIO 8 */
 .erroraccio{
@@ -118,6 +118,14 @@
     font-size: 20px;
 }
 /* ESERCIZIO 9 */
+.ex-9-img{
+    transition: filter 3s ease-in-out, width 3s ease-in-out;
+}
+
+.ex-9-img:hover{
+    filter: hue-rotate(180deg) grayscale(100%);
+    width: 500px;
+}
 /* ESERCIZIO 10 */
 /* ESERCIZIO 11 */
 /* ESERCIZIO 12 */
