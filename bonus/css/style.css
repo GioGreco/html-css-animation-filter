@@ -1,0 +1,316 @@
+/* UTILITY */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.debug{
+    border: 1px solid red;
+}
+
+/* GENERAL */
+
+body{
+    height: 100vh;
+}
+
+.canvas{
+    height: 100%;
+    background-color: rgba(50, 50, 50, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ANIMAZIONI */
+
+/* animazione di comparsa #angry */
+@keyframes ciccio-roll{
+    100%{
+        width: 100%;
+        transform: rotate(1440deg);
+    }
+}
+
+/* animzioni di comparsa di .balloon e .paguri */
+@keyframes paguri-balloon{
+    100%{
+        width: 200px;
+    }
+}
+
+@keyframes caption{
+    100%{
+        width: 160px;
+        opacity: 100%;
+    }
+}
+
+/* animazione di comparsa di .cornetto */
+@keyframes cornettone{
+    80%{
+        width: 900px;
+        top: 75%;
+    }
+    100%{
+        width: 700px;
+        top: 75%;
+    }
+}
+
+/* animazione di comparsa .shoot-btn */
+@keyframes sparo{
+    100%{
+        opacity: 100%;
+    }
+}
+
+/* animazione del lancio di .cornetto */
+@keyframes lancio{
+    0%{
+        top: 75%;
+    }
+    100%{
+        left: 51.5%;
+        top: 30%;
+        transform: translate(-10%, 0);
+        transform: rotate(90deg);
+        width: 20px;
+    }
+}
+
+/* animazione di comparsa di .macchia */
+@keyframes macchia{
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+/* animazione di scomparsa di .angry */
+@keyframes addio{
+    100%{
+        opacity: 0%;
+    }
+}
+
+/* animazione di comparsa di .layover */
+@keyframes layover{
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 70%;
+    }
+}
+
+/* animazione di comparsa di .ciccio-colpito */
+@keyframes colpito{
+    100%{
+        opacity: 100%;
+        padding: 0px;
+    }
+}
+
+/* animazione di comparsa di .wasted */
+@keyframes wasted {
+    100%{
+        opacity: 100%;
+        width: 900px;
+    }
+}
+
+/* CICCIO NEMICO */
+.canvas .ciccio-nemico{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+}
+
+.canvas .ciccio-nemico #angry{
+    width: 0%;
+    display: block;
+    margin: 0 auto;
+    animation: ciccio-roll 2s ease-in-out forwards .5s;
+}
+
+/* BALLOON */
+.canvas .balloon{
+    width: 0px;
+    position: absolute;
+    top: 10%;
+    left: 55%;
+    text-align: center;
+    animation: paguri-balloon 2s ease-in-out forwards;
+}
+
+.canvas .balloon .cornice{
+    width: 100%;
+}
+
+.canvas .balloon .caption{
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    text-align: center;
+    width: 0px;
+    opacity: 0%;
+    font-size: 13px;
+    padding: 10px;
+    color: white;
+    animation: caption 0s ease-in-out forwards 2s;
+}
+
+/* PAGURI */
+
+.canvas .paguri{
+    position: absolute;
+    top: 30%;
+    width: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.canvas .paguri .paguro{
+    width: 0px;
+    animation: paguri-balloon 2s ease-in-out forwards;
+}
+
+.canvas .paguri .paguro.primo{
+    transform: scaleX(-1);
+}
+
+/* BOTTONE SPARO */
+
+.canvas .shoot-btn{
+    display: inline-block;
+    background-color: bisque;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 0 3px red,
+                0 0 0 6px yellow,
+                0 0 0 9px black;
+    color: red;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    bottom: 5%;
+    transform: translate(-50%, 0);
+    z-index: 50;
+    cursor: pointer;
+    opacity: 0%;
+    animation: sparo 2s ease-in-out forwards 2.5s; /*delay di 2.5s per iniziare appena finisce 'cornettone'*/
+}
+
+.canvas .shoot-btn:hover + .ciccio-nemico + .balloon + .cornetto, .canvas .shoot-btn:hover + .ciccio-nemico + .balloon + .cornetto #nutella{
+    opacity: 100%;
+    animation: lancio 2s ease-in forwards;
+}
+
+/* CORNETTO */
+
+.canvas .cornetto{
+    animation: cornettone 2s ease-in-out forwards 2.5s;
+}
+
+.canvas .cornetto{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 700px;
+}
+
+.canvas .cornetto #nutella{
+    width: 100%;
+    opacity: 50%;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+/* MACCHIA */
+
+.canvas .macchia{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    opacity: 0%;
+}
+
+.canvas .shoot-btn:hover + .ciccio-nemico + .balloon + .cornetto + .macchia{
+    animation: macchia 1s ease-in-out forwards 2s;
+}
+
+/* ADDIO CICCIO */
+
+.canvas .shoot-btn:hover + .ciccio-nemico{
+    animation: addio 2s ease-in-out forwards 3s;
+}
+
+/* LAYOVER */
+.canvas .layover{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 1);
+    opacity: 0%;
+}
+
+.canvas .shoot-btn:hover + .ciccio-nemico + .balloon + .cornetto + .macchia + .layover{
+    animation: layover 2s ease-in-out forwards 3s;
+}
+
+/* CICCIO COLPITO */
+.canvas .ciccio-colpito{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    opacity: 0%;
+    padding: 650px;
+}
+
+.canvas .ciccio-colpito img{
+    width: 100%;
+}
+
+.canvas .shoot-btn:hover + .ciccio-nemico + .balloon + .cornetto + .macchia + .layover + .ciccio-colpito{
+    animation: colpito 4s ease-in-out forwards 3s;
+}
+
+/* WASTED */
+
+.canvas .wasted{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 500px;
+    opacity: 0%;
+    margin: 0 auto;
+}
+
+.canvas .wasted img{
+    width: 100%;
+}
+
+.canvas .shoot-btn:hover + .ciccio-nemico + .balloon + .cornetto + .macchia + .layover + .ciccio-colpito + .wasted{
+    animation: wasted 4s ease-in-out forwards 4s;
+}
